@@ -29,19 +29,16 @@ var taskFormHandler = function(event) {
     var taskNameInput = document.querySelector("input[name='task-name']").value;
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
-    // package up data as an object
-        
-    var taskDataObj = {
-        name: taskNameInput,
-        type: taskTypeInput
-    };
+    
     
     // check if input values are empty strings
     if (!taskNameInput || !taskTypeInput) {
         alert("You need to fill out the task form!");
         return false;
     }
-    formEl.reset();
+    // reset form fields for next task to be entered
+    document.querySelector("input[name='task-name']").value = "";
+    document.querySelector("select[name='task-type']").selectedIndex = 0;
     
     // confirm we are editing task vs entering new task
     var isEdit = formEl.hasAttribute('data-task-id');
